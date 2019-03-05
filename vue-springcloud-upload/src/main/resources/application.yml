@@ -1,0 +1,27 @@
+server:
+  port: 8764
+spring:
+  application:
+    name: upload-service
+  servlet:
+    multipart:
+      max-file-size: 5MB
+# Eureka
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka
+  instance:
+    lease-renewal-interval-in-seconds: 5 # 5 senconds sent a heartbeat
+    lease-expiration-duration-in-seconds: 10 # 10 seconds no sent will expire
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+    instance-id: ${spring.application.name}:${server.port}
+fdfs:
+  so-timeout: 1501
+  connect-timeout: 601
+  thumb-image: # mini image
+    width: 60
+    height: 60
+  tracker-list: # tracker address
+    - 192.168.248.3:22122
